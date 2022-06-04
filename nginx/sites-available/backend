@@ -1,0 +1,38 @@
+# Backend server configuration
+#
+server {
+	listen 8080 default_server;
+	listen [::]:8080 default_server;
+
+	root /var/www/wordpress;
+
+	# Add index.php to the list if you are using PHP
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	# Enable logging of X-Forwarded-For and Server Hostname
+	access_log  /var/log/nginx/backend.access.log custom;
+	
+        location = /favicon.ico { log_not_found off; access_log off; }
+        location = /robots.txt { log_not_found off; access_log off; allow all; }
+        location ~* \.(css|gif|ico|jpeg|jpg|js|png)$ {
+                expires max;
+                log_not_found off;
+        }
+
+	location / {
+		try_files $uri $uri/ /index.php$is_args$args;
+	}
+
+	# pass PHP scripts to FastCGI server
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+	
+		# With php-fpm (or other unix sockets):
+		fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+
+	}
+
+}
+
