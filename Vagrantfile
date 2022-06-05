@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
     apt update
     apt install -y nginx mysql-server php-fpm php-mysql
     cp -R /vagrant/nginx/ /etc/nginx/
+    mkdir -p /var/cache/nginx/blog && chown -R www-data:www-data /var/cache/nginx
     ln -s /etc/nginx/sites-available/reverse-proxy /etc/nginx/sites-enabled/reverse-proxy
     ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled/backend
     
