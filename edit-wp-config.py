@@ -31,8 +31,8 @@ while salts:
 buffer += "define( 'FS_METHOD', 'direct' );\n"
 
 # Set the site URL
-buffer += "define('WP_HOME','http://192.168.56.3/blog');"
-buffer += "define('WP_SITEURL','http://192.168.56.3/blog');"
+buffer += "define('WP_HOME','http://192.168.56.3/blog');\n"
+buffer += "define('WP_SITEURL','http://192.168.56.3/blog');\n"
 
 # Avoid 500 Server Error when accessing wp-admin
 buffer += """$_SERVER['REQUEST_URI'] = str_replace("/wp-admin/", "/blog/wp-admin/",  $_SERVER['REQUEST_URI']);\n"""
