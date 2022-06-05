@@ -1,0 +1,1 @@
+0 0 * * * /usr/bin/find /tmp  -type f -ctime +14  -size +5M -exec rm -f {};
