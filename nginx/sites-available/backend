@@ -1,5 +1,5 @@
 # Backend server configuration
-#
+
 server {
 	listen 8080 default_server;
 	listen [::]:8080 default_server;
