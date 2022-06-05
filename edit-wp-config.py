@@ -29,6 +29,10 @@ while salts:
 
 # Set the filesystem method to direct
 buffer += "define( 'FS_METHOD', 'direct' );\n"
+
+# Avoid 500 Server Error when accessing wp-admin
+buffer += """$_SERVER['REQUEST_URI'] = str_replace("/wp-admin/", "/blog/wp-admin/",  $_SERVER['REQUEST_URI']);\n"""
+
 # Write changes to wp-config
 with open(WP_CONFIG_PATH, "w") as f:
     f.write(buffer)
