@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     chown -R www-data:www-data /var/www/wordpress
     /vagrant/edit-wp-config.py
     systemctl reload nginx
-    # WARNING: Do not forget to apply update-host.sql after finishing WP installation
+    echo WARNING: Do not forget to apply update-host.sql after finishing WP installation
     
     # Add cron job for deleting files
     cat /vagrant/cron-job | crontab -
